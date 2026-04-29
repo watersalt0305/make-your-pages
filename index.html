@@ -90,6 +90,15 @@ pre{
 code{font-family:var(--mono);font-size:13px;
   background:rgba(139,94,60,0.1);color:var(--accent);
   padding:2px 6px;border-radius:3px}
+/* Prism 代码块内的 code 不要自定义背景 */
+pre code{background:none;color:inherit;padding:0;border-radius:0}
+pre[class*="language-"]{
+  background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:6px;padding:16px;margin:16px 0;
+}
+/* Prism token 不要加边框和背景 */
+pre .token{border:none !important;background:none !important;
+  border-radius:0 !important;padding:0 !important}
 
 /* --- 交互式代码编辑器 --- */
 .playground{
