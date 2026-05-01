@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>常用标签 · HTML ② — Make Your Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/ayu-dark.min.css" rel="stylesheet">
+<style>
+:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}
+.container{max-width:720px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}
+.step-num{font-size:12px;color:var(--accent2);letter-spacing:1px;font-weight:600;margin-bottom:4px}
+h1{font-size:24px;font-weight:700;margin-bottom:8px}
+.lead{font-size:15px;color:var(--text2);margin-bottom:24px}
+.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}
+code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}
+.playground{border:1px solid var(--code-border);margin:24px 0;background:var(--card);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-radius:8px}
+.playground-header{display:flex;align-items:center;padding:0 16px;height:38px;background:#2a2a3a;border-bottom:1px solid var(--code-border);font-size:12px;color:#9a8d82}.playground-header-dots{display:flex;gap:6px;margin-right:16px}.playground-header-dots span{width:10px;height:10px;border-radius:50%}.playground-header span.title{font-weight:600;flex:1}.playground-run{background:var(--accent);color:#fff;border:none;padding:4px 14px;font-size:11px;cursor:pointer;font-weight:600;border-radius:4px}
+.playground-body{display:flex}.playground-code{width:50%;border-right:1px solid var(--code-border)}.playground-code .CodeMirror{height:280px;font-family:var(--mono);font-size:13px}.playground-code .CodeMirror-gutters{background:#16161e;border-right:1px solid #2a2a3a}.playground-preview{width:50%;min-height:280px;background:#fff}.playground-preview iframe{width:100%;height:100%;border:none;min-height:280px}
+.compare-table{width:100%;border-collapse:collapse;margin:16px 0 32px;font-size:14px}.compare-table th{text-align:left;padding:8px 12px;border-bottom:2px solid var(--accent);color:var(--accent);font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase}.compare-table td{padding:8px 12px;border-bottom:1px solid var(--border)}.compare-table tr:nth-child(even){background:rgba(245,239,232,0.5)}
+.nav-row{display:flex;justify-content:space-between;margin-top:32px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}
+@media(max-width:768px){.playground-body{flex-direction:column}.playground-code,.playground-preview{width:100%}.playground-code{border-right:none;border-bottom:1px solid var(--code-border)}}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="index.html" style="font-size:13px;color:var(--text3);display:inline-block;margin-bottom:16px">← 目录</a>
+<p class="step-num">HTML · 第 2 步</p>
+<h1>常用标签</h1>
+<p class="lead">图片用 &lt;img&gt;，链接用 &lt;a&gt;，列表用 &lt;ul&gt;。把它们拼在一起：</p>
+<div class="playground" id="pg1">
+  <div class="playground-header">
+    <div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+    <span class="title">index.html</span>
+    <button class="playground-run" onclick="runPlayground('pg1')">▶ 运行</button>
+  </div>
+  <div class="playground-body">
+    <div class="playground-code">
+      <textarea id="pg1-code">&lt;h1&gt;STEM-IX 研究所&lt;/h1&gt;
+&lt;p&gt;Welcome, Researcher.&lt;/p&gt;
+
+&lt;h2&gt;今日公告&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;六楼咖啡机：&lt;b&gt;故障中&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;连廊夕阳：17:42 - 17:55&lt;/li&gt;
+  &lt;li&gt;Tower A 温度：19.7°C&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href="#"&gt;更多信息 →&lt;/a&gt;</textarea>
+    </div>
+    <div class="playground-preview"><iframe id="pg1-frame"></iframe></div>
+  </div>
+</div>
+<h2 style="font-size:18px;margin-top:32px">标签速查</h2>
+<table class="compare-table">
+<tr><th>标签</th><th>用途</th><th>例子</th></tr>
+<tr><td><code>&lt;h1&gt;~&lt;h6&gt;</code></td><td>标题（h1最大，h6最小）</td><td><code>&lt;h1&gt;角色介绍&lt;/h1&gt;</code></td></tr>
+<tr><td><code>&lt;p&gt;</code></td><td>段落</td><td><code>&lt;p&gt;她是STEM首席。&lt;/p&gt;</code></td></tr>
+<tr><td><code>&lt;img&gt;</code></td><td>图片</td><td><code>&lt;img src="oc.png"&gt;</code></td></tr>
+<tr><td><code>&lt;a&gt;</code></td><td>链接</td><td><code>&lt;a href="..."&gt;点这里&lt;/a&gt;</code></td></tr>
+<tr><td><code>&lt;ul&gt;&lt;li&gt;</code></td><td>无序列表</td><td><code>&lt;ul&gt;&lt;li&gt;项目&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+<tr><td><code>&lt;b&gt;</code></td><td>加粗</td><td><code>&lt;b&gt;重要&lt;/b&gt;</code></td></tr>
+<tr><td><code>&lt;div&gt;</code></td><td>容器（装其他元素的盒子）</td><td><code>&lt;div&gt;...&lt;/div&gt;</code></td></tr>
+</table>
+<div class="note">注意 <code>&lt;img&gt;</code> 没有闭合标签——它是单标签，<code>/&gt;</code> 表示结束。</div>
+<div class="nav-row">
+  <a href="html-1.html">← 最简单的网页</a>
+  <a href="html-3.html">下一步：完整结构 →</a>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/xml/xml.min.js"></script>
+<script>
+var editors={};
+function initPG(id){var ta=document.getElementById(id+'-code');if(!ta)return;var cm=CodeMirror.fromTextArea(ta,{mode:'htmlmixed',theme:'ayu-dark',lineNumbers:true,lineWrapping:true,tabSize:2,viewportMargin:Infinity});cm.setSize('100%',280);editors[id]=cm;runPlayground(id);}
+function runPlayground(id){var cm=editors[id];var code=cm?cm.getValue():document.getElementById(id+'-code').value;var f=document.getElementById(id+'-frame');var p=f.parentNode;var n=document.createElement('iframe');n.id=id+'-frame';n.style.cssText='width:100%;border:none;min-height:280px';p.replaceChild(n,f);var d=n.contentDocument||n.contentWindow.document;d.open();d.write(code);d.close();}
+window.addEventListener('load',function(){initPG('pg1');});
+</script>
+</body>
+</html>
