@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>角色卡片 · CSS ③ — Make Your Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/ayu-dark.min.css" rel="stylesheet">
+<style>:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}.container{max-width:720px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}.step-num{font-size:12px;color:var(--accent2);letter-spacing:1px;font-weight:600;margin-bottom:4px}h1{font-size:24px;font-weight:700;margin-bottom:8px}.lead{font-size:15px;color:var(--text2);margin-bottom:24px}.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}.playground{border:1px solid var(--code-border);margin:24px 0;background:var(--card);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-radius:8px}.playground-header{display:flex;align-items:center;padding:0 16px;height:38px;background:#2a2a3a;border-bottom:1px solid var(--code-border);font-size:12px;color:#9a8d82}.playground-header-dots{display:flex;gap:6px;margin-right:16px}.playground-header-dots span{width:10px;height:10px;border-radius:50%}.playground-header span.title{font-weight:600;flex:1}.playground-run{background:var(--accent);color:#fff;border:none;padding:4px 14px;font-size:11px;cursor:pointer;font-weight:600;border-radius:4px}.playground-body{display:flex}.playground-code{width:50%;border-right:1px solid var(--code-border)}.playground-code .CodeMirror{height:420px;font-family:var(--mono);font-size:13px}.playground-code .CodeMirror-gutters{background:#16161e;border-right:1px solid #2a2a3a}.playground-preview{width:50%;min-height:420px;background:#fff;display:flex;align-items:center;justify-content:center}.playground-preview iframe{width:100%;height:100%;border:none;min-height:420px}.nav-row{display:flex;justify-content:space-between;margin-top:32px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}@media(max-width:768px){.playground-body{flex-direction:column}.playground-code,.playground-preview{width:100%}.playground-code{border-right:none;border-bottom:1px solid var(--code-border)}}</style>
+</head>
+<body>
+<div class="container">
+<a href="index.html" style="font-size:13px;color:var(--text3);display:inline-block;margin-bottom:16px">← 目录</a>
+<p class="step-num">CSS · 第 3 步</p>
+<h1>做一张角色卡片</h1>
+<p class="lead">把你学到的颜色、盒模型、字体拼在一起，就是一张OC卡片。</p>
+<div class="playground" id="pg1"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">角色卡片</span><button class="playground-run" onclick="runPlayground('pg1')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg1-code">&lt;style&gt;
+  .card {
+    background: #ffffff;
+    border: 1px solid #ddd5cb;
+    padding: 24px;
+    max-width: 300px;
+    text-align: center;
+  }
+  .card .avatar {
+    width: 80px; height: 80px;
+    background: #8b5e3c;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    font-size: 40px;
+    line-height: 80px;
+    text-align: center;
+  }
+  .card h2 {
+    color: #2c2420;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .card .title {
+    color: #8b5e3c;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  .card .info {
+    color: #6b5e54;
+    font-size: 13px;
+    margin: 4px 0;
+  }
+  .card .tag {
+    display: inline-block;
+    border: 1px solid #8b5e3c;
+    color: #8b5e3c;
+    padding: 2px 10px;
+    font-size: 11px;
+    margin: 12px 4px 0;
+  }
+&lt;/style&gt;
+
+&lt;div class="card"&gt;
+  &lt;div class="avatar"&gt;🧪&lt;/div&gt;
+  &lt;h2&gt;灯儿&lt;/h2&gt;
+  &lt;p class="title"&gt;STEM 首席研究员&lt;/p&gt;
+  &lt;p class="info"&gt;📍 Tower A · 八楼&lt;/p&gt;
+  &lt;p class="info"&gt;🌡️ 19.7°C&lt;/p&gt;
+  &lt;span class="tag"&gt;S级权限&lt;/span&gt;
+  &lt;span class="tag"&gt;碎片科学&lt;/span&gt;
+&lt;/div&gt;</textarea></div><div class="playground-preview"><iframe id="pg1-frame"></iframe></div></div></div>
+<div class="note"><code>border-radius: 50%</code> → 圆形头像 | <code>text-align: center</code> → 居中 | <code>max-width</code> → 卡片不会太宽<br>试试改颜色、名字、换成你的OC信息！</div>
+<h2 style="font-size:18px;margin-top:32px">你学会了</h2>
+<p>✅ color 和 font-size 控制文字 ✅ padding/border/margin 控制间距 ✅ border-radius 做圆角 ✅ class 选择器 ✅ 拼出完整角色卡片</p>
+<div class="nav-row"><a href="css-2.html">← 盒模型</a><a href="js-1.html">JavaScript：按钮点击 →</a></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script><script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/htmlmixed/htmlmixed.min.js"></script><script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/xml/xml.min.js"></script><script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/css/css.min.js"></script><script>var editors={};function initPG(id){var ta=document.getElementById(id+'-code');if(!ta)return;var cm=CodeMirror.fromTextArea(ta,{mode:'htmlmixed',theme:'ayu-dark',lineNumbers:true,lineWrapping:true,tabSize:2,viewportMargin:Infinity});cm.setSize('100%',420);editors[id]=cm;runPlayground(id);}function runPlayground(id){var cm=editors[id];var code=cm?cm.getValue():document.getElementById(id+'-code').value;var f=document.getElementById(id+'-frame');var p=f.parentNode;var n=document.createElement('iframe');n.id=id+'-frame';n.style.cssText='width:100%;border:none;min-height:420px';p.replaceChild(n,f);var d=n.contentDocument||n.contentWindow.document;d.open();d.write(code);d.close();}window.addEventListener('load',function(){initPG('pg1');});</script>
+</body>
+</html>
