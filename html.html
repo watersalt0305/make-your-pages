@@ -1,1 +1,90 @@
-replace_with_read_content
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HTML · 内容骨架 — Make Your Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/ayu-dark.min.css" rel="stylesheet">
+<style>
+:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}
+.container{max-width:800px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2)}h1{font-size:28px;font-weight:700;margin-bottom:8px}h2{font-size:20px;font-weight:600;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}h3{font-size:16px;font-weight:600;color:var(--accent);margin:28px 0 10px}p{margin-bottom:16px}.subtitle{font-size:14px;color:var(--text3);margin-bottom:32px}.back-link{font-size:13px;color:var(--text3);display:inline-block;margin-bottom:20px}.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}.compare-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}.compare-table th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--accent);color:var(--accent);font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase}.compare-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}.compare-table tr:nth-child(even){background:rgba(245,239,232,0.5)}code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}
+.playground{border:1px solid var(--code-border);margin:24px 0;background:var(--card);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-radius:8px}.playground-header{display:flex;align-items:center;padding:0 16px;height:38px;background:#2a2a3a;border-bottom:1px solid var(--code-border);font-size:12px;color:#9a8d82}.playground-header-dots{display:flex;gap:6px;margin-right:16px}.playground-header-dots span{width:10px;height:10px;border-radius:50%}.playground-header span.title{font-weight:600;flex:1}.playground-run{background:var(--accent);color:#fff;border:none;padding:4px 14px;font-size:11px;cursor:pointer;font-weight:600;border-radius:4px}.playground-body{display:flex}.playground-code{width:55%;border-right:1px solid var(--code-border)}.playground-code textarea{width:100%;min-height:220px;border:none;padding:16px;font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--code-bg);color:var(--code-text);resize:vertical;outline:none}.playground-code .CodeMirror{height:220px;font-family:var(--mono);font-size:13px}.playground-code .CodeMirror-gutters{background:#16161e;border-right:1px solid #2a2a3a}.playground-preview{width:45%;min-height:220px;background:#fff}.playground-preview iframe{width:100%;height:100%;border:none;min-height:220px}.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}@media(max-width:768px){.playground-body{flex-direction:column}.playground-code,.playground-preview{width:100%}.playground-code{border-right:none;border-bottom:1px solid var(--code-border)}}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back-link" href="index.html">← 返回目录</a>
+<h1>HTML · 内容骨架</h1>
+<p class="subtitle">网页的所有文字、图片、链接，都用 HTML 标签描述。下面三步学会。</p>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:32px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 1 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">一个最简单的网页</h2></div>
+<p>一个网页可以<strong>只有两行</strong>——一个标题，一段话。改右边的文字看看效果：</p>
+<div class="playground" id="pg-1"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">最简单的网页</span><button class="playground-run" onclick="runPlayground('pg-1')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-1-code">&lt;h1&gt;欢迎来到我的世界&lt;/h1&gt;
+&lt;p&gt;这里是关于我的OC的一切。&lt;/p&gt;</textarea></div><div class="playground-preview"><iframe id="pg-1-frame"></iframe></div></div></div>
+<div class="note"><code>&lt;h1&gt;</code> = 标题（最大）&nbsp;&nbsp;&nbsp;<code>&lt;p&gt;</code> = 段落<br><strong>规则：</strong>所有标签都是 <code>&lt;标签名&gt;内容&lt;/标签名&gt;</code> 的格式。<br><strong>💡 试试看：</strong>把「欢迎来到我的世界」改成你 OC 的名字，然后点运行。</div>
+<h3>🔍 发生了什么</h3>
+<p>浏览器读到 <code>&lt;h1&gt;</code> 就知道「这是一级标题」，用大号加粗显示。读到 <code>&lt;p&gt;</code> 就知道「这是正文段落」，另起一行。你<strong>不需要</strong>写字号多大、什么颜色——HTML 只管内容是什么。</p>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:40px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 2 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">加点内容</h2></div>
+<p>网页不止标题和段落——还可以有<strong>列表、加粗、链接</strong>：</p>
+<div class="playground" id="pg-2"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">常用标签</span><button class="playground-run" onclick="runPlayground('pg-2')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-2-code">&lt;h1&gt;STEM-IX 研究所&lt;/h1&gt;
+&lt;p&gt;Welcome, Researcher.&lt;/p&gt;
+
+&lt;h2&gt;今日公告&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;六楼咖啡机：&lt;b&gt;故障中&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;连廊夕阳：17:42 - 17:55&lt;/li&gt;
+  &lt;li&gt;Tower A 温度：19.7°C&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href="https://example.com"&gt;更多信息 →&lt;/a&gt;</textarea></div><div class="playground-preview"><iframe id="pg-2-frame"></iframe></div></div></div>
+<div class="note"><code>&lt;ul&gt;</code> = 无序列表的容器&nbsp;&nbsp;&nbsp;<code>&lt;li&gt;</code> = 列表项<br><code>&lt;b&gt;</code> = 加粗&nbsp;&nbsp;&nbsp;<code>&lt;a href="..."&gt;</code> = 链接<br><strong>💡 试试看：</strong>把「故障中」改成别的内容；把链接地址改成你自己的。</div>
+<h3>常用标签速查</h3>
+<table class="compare-table"><tr><th>标签</th><th>用途</th><th>例子</th></tr>
+<tr><td><code>&lt;h1&gt;~&lt;h6&gt;</code></td><td>标题，数字越小字越大</td><td><code>&lt;h1&gt;角色介绍&lt;/h1&gt;</code></td></tr>
+<tr><td><code>&lt;p&gt;</code></td><td>段落</td><td><code>&lt;p&gt;她是STEM首席。&lt;/p&gt;</code></td></tr>
+<tr><td><code>&lt;img src="图片地址"&gt;</code></td><td>插入图片（单标签，不用闭合）</td><td><code>&lt;img src="oc.png"&gt;</code></td></tr>
+<tr><td><code>&lt;a href="链接"&gt;</code></td><td>可点击的链接</td><td><code>&lt;a href="https://..."&gt;点这里&lt;/a&gt;</code></td></tr>
+<tr><td><code>&lt;div&gt;</code></td><td>容器盒子（后面CSS会用到）</td><td><code>&lt;div class="card"&gt;...&lt;/div&gt;</code></td></tr>
+<tr><td><code>&lt;ul&gt;&lt;li&gt;</code></td><td>无序列表</td><td><code>&lt;ul&gt;&lt;li&gt;事项&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+<tr><td><code>&lt;b&gt;</code></td><td>加粗文字</td><td><code>&lt;b&gt;重要&lt;/b&gt;</code></td></tr>
+<tr><td><code>&lt;hr&gt;</code></td><td>分割线（单标签）</td><td><code>&lt;hr&gt;</code></td></tr></table>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:40px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 3 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">完整的页面结构</h2></div>
+<p>一个真正的 HTML 文件还需要「包装」——<code>&lt;head&gt;</code>（设置）和 <code>&lt;body&gt;</code>（内容）。加上 <code>style</code> 属性可以直接上色：</p>
+<div class="playground" id="pg-3"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">角色档案</span><button class="playground-run" onclick="runPlayground('pg-3')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-3-code">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;我的OC站&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1 style="color:#8b5e3c"&gt;角色档案&lt;/h1&gt;
+    &lt;p&gt;&lt;b&gt;名字：&lt;/b&gt;灯儿&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;职位：&lt;/b&gt;STEM 首席研究员&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;所在地：&lt;/b&gt;Tower A · 八楼&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;p style="color:#9a8d82;font-size:13px"&gt;修改于 2026 年&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</textarea></div><div class="playground-preview"><iframe id="pg-3-frame"></iframe></div></div></div>
+<div class="note"><code>&lt;head&gt;</code> = 给浏览器看的（编码、页面标题、以后装CSS的地方）<br><code>&lt;body&gt;</code> = 给用户看的（所有可见内容都在这里）<br><code>style="xxx:yyy"</code> = 直接在标签上写样式<br><strong>💡 试试看：</strong>把 <code>title</code> 改成你的OC站名字；把角色信息换成你的OC。</div>
+<h2 style="margin-top:40px">🎯 你学会了</h2>
+<p>✅ 用 <code>&lt;h1&gt;</code> 和 <code>&lt;p&gt;</code> 写标题和段落<br>✅ 用 <code>&lt;ul&gt;&lt;li&gt;</code> 写列表，<code>&lt;b&gt;</code> 加粗，<code>&lt;a&gt;</code> 做链接<br>✅ <code>&lt;head&gt;</code> 放设置，<code>&lt;body&gt;</code> 放内容<br>✅ 用 <code>style="..."</code> 快速改颜色和字号</p>
+<p style="color:var(--text2)">有了这三步，你已经可以写一个能看的基础页面了。接下来学 CSS，让它变好看。</p>
+<div class="nav-row"><a href="index.html">← 目录</a><a href="css.html">CSS · 视觉样式 →</a></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/javascript/javascript.min.js"></script>
+<script>
+var editors={};
+function initPG(id){var ta=document.getElementById(id+'-code');if(!ta)return;var cm=CodeMirror.fromTextArea(ta,{mode:'htmlmixed',theme:'ayu-dark',lineNumbers:true,lineWrapping:true,tabSize:2,viewportMargin:Infinity});cm.setSize('100%',220);editors[id]=cm;runPlayground(id);}
+function runPlayground(id){var cm=editors[id];var code=cm?cm.getValue():document.getElementById(id+'-code').value;var f=document.getElementById(id+'-frame');var p=f.parentNode;var n=document.createElement('iframe');n.id=id+'-frame';n.style.cssText='width:100%;border:none;min-height:220px';p.replaceChild(n,f);var d=n.contentDocument||n.contentWindow.document;d.open();d.write(code);d.close();}
+window.addEventListener('load',function(){initPG('pg-1');initPG('pg-2');initPG('pg-3');});
+</script>
+</body>
+</html>
