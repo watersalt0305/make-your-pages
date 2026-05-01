@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>完整结构 · HTML ③ — Make Your Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/ayu-dark.min.css" rel="stylesheet">
+<style>
+:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}
+.container{max-width:720px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}
+.step-num{font-size:12px;color:var(--accent2);letter-spacing:1px;font-weight:600;margin-bottom:4px}
+h1{font-size:24px;font-weight:700;margin-bottom:8px}
+.lead{font-size:15px;color:var(--text2);margin-bottom:24px}
+.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}
+code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}
+.playground{border:1px solid var(--code-border);margin:24px 0;background:var(--card);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-radius:8px}
+.playground-header{display:flex;align-items:center;padding:0 16px;height:38px;background:#2a2a3a;border-bottom:1px solid var(--code-border);font-size:12px;color:#9a8d82}.playground-header-dots{display:flex;gap:6px;margin-right:16px}.playground-header-dots span{width:10px;height:10px;border-radius:50%}.playground-header span.title{font-weight:600;flex:1}.playground-run{background:var(--accent);color:#fff;border:none;padding:4px 14px;font-size:11px;cursor:pointer;font-weight:600;border-radius:4px}
+.playground-body{display:flex}.playground-code{width:50%;border-right:1px solid var(--code-border)}.playground-code .CodeMirror{height:300px;font-family:var(--mono);font-size:13px}.playground-code .CodeMirror-gutters{background:#16161e;border-right:1px solid #2a2a3a}.playground-preview{width:50%;min-height:300px;background:#fff}.playground-preview iframe{width:100%;height:100%;border:none;min-height:300px}
+.nav-row{display:flex;justify-content:space-between;margin-top:32px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}
+@media(max-width:768px){.playground-body{flex-direction:column}.playground-code,.playground-preview{width:100%}.playground-code{border-right:none;border-bottom:1px solid var(--code-border)}}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="index.html" style="font-size:13px;color:var(--text3);display:inline-block;margin-bottom:16px">← 目录</a>
+<p class="step-num">HTML · 第 3 步</p>
+<h1>完整的页面结构</h1>
+<p class="lead">一个完整的 HTML 文件需要 <code>&lt;head&gt;</code>（设置）和 <code>&lt;body&gt;</code>（内容）。加上 <code>style</code> 属性可以直接上色：</p>
+<div class="playground" id="pg1">
+  <div class="playground-header">
+    <div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+    <span class="title">角色档案</span>
+    <button class="playground-run" onclick="runPlayground('pg1')">▶ 运行</button>
+  </div>
+  <div class="playground-body">
+    <div class="playground-code">
+      <textarea id="pg1-code">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;我的OC站&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1 style="color:#8b5e3c"&gt;角色档案&lt;/h1&gt;
+    &lt;p&gt;&lt;b&gt;名字：&lt;/b&gt;灯儿&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;职位：&lt;/b&gt;STEM 首席研究员&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;所在地：&lt;/b&gt;Tower A · 八楼&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;p style="color:#9a8d82;font-size:13px"&gt;修改于 2026 年&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</textarea>
+    </div>
+    <div class="playground-preview"><iframe id="pg1-frame"></iframe></div>
+  </div>
+</div>
+<div class="note"><code>&lt;head&gt;</code> = 浏览器看的（编码、标题、以后装CSS的地方）<br><code>&lt;body&gt;</code> = 用户看的（所有可见内容）<br><code>style="..."</code> = 在标签上直接写样式<br><code>&lt;hr&gt;</code> = 分割线</div>
+<h2 style="font-size:18px;margin-top:32px">你学会了</h2>
+<p>✅ 标题和段落<br>✅ 图片、链接、列表<br>✅ 完整的 head+body 结构<br>✅ 用 style 直接改颜色大小</p>
+<div class="nav-row">
+  <a href="html-2.html">← 常用标签</a>
+  <a href="css-1.html">CSS · 颜色和字体 →</a>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/xml/xml.min.js"></script>
+<script>
+var editors={};
+function initPG(id){var ta=document.getElementById(id+'-code');if(!ta)return;var cm=CodeMirror.fromTextArea(ta,{mode:'htmlmixed',theme:'ayu-dark',lineNumbers:true,lineWrapping:true,tabSize:2,viewportMargin:Infinity});cm.setSize('100%',300);editors[id]=cm;runPlayground(id);}
+function runPlayground(id){var cm=editors[id];var code=cm?cm.getValue():document.getElementById(id+'-code').value;var f=document.getElementById(id+'-frame');var p=f.parentNode;var n=document.createElement('iframe');n.id=id+'-frame';n.style.cssText='width:100%;border:none;min-height:300px';p.replaceChild(n,f);var d=n.contentDocument||n.contentWindow.document;d.open();d.write(code);d.close();}
+window.addEventListener('load',function(){initPG('pg1');});
+</script>
+</body>
+</html>
