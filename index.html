@@ -8,121 +8,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;
-  --text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;
-  --accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;
-  --code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;
-  --font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;
-  --mono:'JetBrains Mono','Fira Code','Consolas',monospace;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;
-  background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}
-a{color:var(--accent);text-decoration:none}
-a:hover{color:var(--accent2);text-decoration:underline}
-.container{max-width:800px;margin:0 auto;padding:40px 24px}
-h1{font-size:32px;font-weight:300;letter-spacing:-0.5px;line-height:1.3;margin-bottom:8px}
-h2{font-size:20px;font-weight:600;margin:32px 0 12px;color:var(--text)}
-p{margin-bottom:16px}
-.subtitle{font-size:14px;color:var(--text3);margin-bottom:24px}
-.tag-line{font-size:12px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:8px}
-.nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:32px 0}
-.nav-card{
-  background:var(--card);border:1px solid var(--border);padding:20px;
-  transition:all .2s;display:block;
-}
-.nav-card:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none;
-  box-shadow:0 4px 12px rgba(139,94,60,0.1)}
-.nav-card h3{font-size:15px;color:var(--text);margin-bottom:6px;font-weight:600}
-.nav-card p{font-size:13px;color:var(--text2);margin:0}
-.nav-card .badge{display:inline-block;font-size:10px;padding:2px 6px;border:1px solid var(--border);
-  color:var(--text3);margin-top:8px;letter-spacing:0.3px}
-.nav-card .badge.wip{border-color:var(--accent2);color:var(--accent2)}
-.back-link{font-size:13px;color:var(--text3);margin-bottom:24px;display:inline-block}
-.back-link:hover{color:var(--accent)}
-footer{margin-top:64px;padding-top:16px;border-top:1px solid var(--border);
-  font-size:12px;color:var(--text3)}
+:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2);text-decoration:underline}.container{max-width:800px;margin:0 auto;padding:40px 24px}h1{font-size:32px;font-weight:300;letter-spacing:-0.5px;line-height:1.3;margin-bottom:8px}h2{font-size:20px;font-weight:600;margin:32px 0 12px;color:var(--text)}p{margin-bottom:16px}.subtitle{font-size:14px;color:var(--text3);margin-bottom:24px}.tag-line{font-size:12px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:8px}.nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:32px 0}.nav-card{background:var(--card);border:1px solid var(--border);padding:20px;transition:all .2s;display:block}.nav-card:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none;box-shadow:0 4px 12px rgba(139,94,60,0.1)}.nav-card h3{font-size:15px;color:var(--text);margin-bottom:6px;font-weight:600}.nav-card p{font-size:13px;color:var(--text2);margin:0}.nav-card .badge{display:inline-block;font-size:10px;padding:2px 6px;border:1px solid var(--border);color:var(--text3);margin-top:8px;letter-spacing:0.3px}.nav-card .badge.wip{border-color:var(--accent2);color:var(--accent2)}footer{margin-top:64px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--text3)}
 </style>
 </head>
 <body>
 <div class="container">
-
 <p class="tag-line">Make Your Pages</p>
 <h1>如何定制你的OC网页</h1>
 <p class="subtitle">写给有世界观但没碰过代码的人</p>
-
-<div style="border-top:1px solid var(--border);padding-top:20px;display:flex;gap:24px;flex-wrap:wrap;margin-bottom:40px">
-  <div style="flex:1;min-width:160px">
-    <p style="font-size:12px;color:var(--text3);margin-bottom:4px">你将学到</p>
-    <p style="font-size:14px;color:var(--text2);margin:0">网页代码是什么 · 三种建站方式 · 如何免费上线</p>
-  </div>
-  <div style="min-width:120px">
-    <p style="font-size:12px;color:var(--text3);margin-bottom:4px">前置要求</p>
-    <p style="font-size:14px;color:var(--text2);margin:0">无。零基础。</p>
-  </div>
-</div>
-
+<div style="border-top:1px solid var(--border);padding-top:20px;display:flex;gap:24px;flex-wrap:wrap;margin-bottom:40px"><div style="flex:1;min-width:160px"><p style="font-size:12px;color:var(--text3);margin-bottom:4px">你将学到</p><p style="font-size:14px;color:var(--text2);margin:0">网页代码是什么 · 三种建站方式 · 如何免费上线</p></div><div style="min-width:120px"><p style="font-size:12px;color:var(--text3);margin-bottom:4px">前置要求</p><p style="font-size:14px;color:var(--text2);margin:0">无。零基础。</p></div></div>
 <h2>📖 代码速览</h2>
 <p>不用背，改改就懂了。每个例子都能直接编辑运行。</p>
-<div class="nav-grid">
-  <a class="nav-card" href="html-1.html">
-    <h3>HTML · 内容骨架</h3>
-    <p>3 步学会标签：最简单的网页 → 常用标签 → 完整页面结构</p>
-  </a>
-  <a class="nav-card" href="css-1.html">
-    <h3>CSS · 视觉样式</h3>
-    <p>颜色、字体、间距——让页面好看。3 步</p>
-  </a>
-  <a class="nav-card" href="js-1.html">
-    <h3>JavaScript · 交互行为</h3>
-    <p>点击、切换、弹窗——让页面动起来。3 步</p>
-  </a>
-</div>
-
+<div class="nav-grid"><a class="nav-card" href="html.html"><h3>HTML · 内容骨架</h3><p>3 步学会标签：网页 → 常用标签 → 完整页面结构</p></a><a class="nav-card" href="css.html"><h3>CSS · 视觉样式</h3><p>颜色、字体、间距——让页面好看。3 步</p></a><a class="nav-card" href="js.html"><h3>JavaScript · 交互行为</h3><p>点击、切换、弹窗——让页面动起来。3 步</p></a></div>
 <h2>❓ 概念扫盲</h2>
-<p>那些听起来很吓人但其实很简单的东西。</p>
-<div class="nav-grid">
-  <a class="nav-card" href="basics.html">
-    <h3>常见疑问</h3>
-    <p>Java ≠ JavaScript · JSON · 前端/后端 · 什么是API</p>
-  </a>
-</div>
-
+<div class="nav-grid"><a class="nav-card" href="basics.html"><h3>常见疑问</h3><p>Java ≠ JavaScript · JSON · 前端/后端 · 什么是API</p></a></div>
 <h2>🛠️ 三种建站方式</h2>
-<p>选最适合你的。</p>
-<div class="nav-grid">
-  <a class="nav-card" href="obsidian.html">
-    <h3>Obsidian + Digital Garden</h3>
-    <p>用笔记软件写 Markdown，插件一键发布。适合整理设定Wiki</p>
-    <span class="badge wip">施工中</span>
-  </a>
-  <a class="nav-card" href="vibe.html">
-    <h3>Vibe Coding · AI 帮你写</h3>
-    <p>描述你想要什么，AI 生成代码。自由度最高</p>
-    <span class="badge wip">施工中</span>
-  </a>
-  <a class="nav-card" href="astro.html">
-    <h3>Astro</h3>
-    <p>轻量框架 + 模板。适合有设计感的作品展示站</p>
-    <span class="badge wip">施工中</span>
-  </a>
-</div>
-
+<div class="nav-grid"><a class="nav-card" href="obsidian.html"><h3>Obsidian + Digital Garden</h3><p>用笔记软件写Markdown，插件一键发布。</p><span class="badge wip">施工中</span></a><a class="nav-card" href="vibe.html"><h3>Vibe Coding · AI帮你写</h3><p>描述你想要什么，AI生成代码。</p><span class="badge wip">施工中</span></a><a class="nav-card" href="astro.html"><h3>Astro</h3><p>轻量框架+模板。有设计感的作品展示站</p><span class="badge wip">施工中</span></a></div>
 <h2>🚀 部署上线</h2>
-<div class="nav-grid">
-  <a class="nav-card" href="deploy.html">
-    <h3>GitHub + Cloudflare Pages</h3>
-    <p>免费、全球可访问、自动部署。从注册到上线全流程</p>
-    <span class="badge wip">施工中</span>
-  </a>
-</div>
-
-<footer>
-  Make Your Pages · 施工中 · by Mishio
-</footer>
-
+<div class="nav-grid"><a class="nav-card" href="deploy.html"><h3>GitHub + Cloudflare Pages</h3><p>免费、全球可访问、自动部署。</p><span class="badge wip">施工中</span></a></div>
+<footer>Make Your Pages · by Mishio</footer>
 </div>
 </body>
 </html>
