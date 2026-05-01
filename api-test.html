@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API 直连测试</title>
+<style>
+:root{--bg:#f8f6f3;--text:#2c2420;--accent:#8b5e3c}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter','Noto Sans SC',sans-serif;padding:24px;max-width:700px;margin:0 auto}
+h1{font-size:24px;margin-bottom:12px}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px;color:var(--accent)}
+input,select,textarea{width:100%;padding:8px 12px;font-size:14px;border:1px solid #ddd5cb;font-family:monospace;margin-bottom:8px}
+textarea{min-height:60px;resize:vertical}
+button{background:var(--accent);color:#fff;border:none;padding:10px 24px;font-size:14px;cursor:pointer}
+button:hover{background:#b07a50}
+#result{background:#1e1e2e;color:#cdd6f4;padding:16px;margin:16px 0;font-family:monospace;font-size:13px;white-space:pre-wrap;min-height:100px;border-radius:6px;overflow-x:auto}
+#result.error{color:#f38ba8}
+#result.success{color:#a6e3a1}
+.note{font-size:12px;color:#9a8d82;margin-top:4px}
+</style>
+</head>
+<body>
+<h1>🧪 API 直连测试</h1>
+<p>测试浏览器能否直接调用 DeepSeek API。</p>
+<label>平台 / Endpoint</label>
+<select id="endpoint"><option value="https://api.deepseek.com/chat/completions">DeepSeek</option><option value="https://api.moonshot.cn/v1/chat/completions">Kimi (Moonshot)</option><option value="https://api.openai.com/v1/chat/completions">OpenAI</option><option value="https://ark.cn-beijing.volces.com/api/v3/chat/completions">豆包 (火山引擎)</option></select>
+<label>API Key</label>
+<input id="apikey" type="text" placeholder="sk-..."><p class="note">Key 不会被保存，仅用于本次测试</p>
+<label>提问内容</label>
+<textarea id="prompt">用HTML写一个简单的角色卡片，包含名字「灯儿」和职位「STEM首席研究员」</textarea>
+<button onclick="testAPI()">▶ 发送请求</button>
+<div id="result">等待测试…</div>
+<script>
+async function testAPI(){
+var r=document.getElementById('result'),k=document.getElementById('apikey').value.trim(),e=document.getElementById('endpoint').value,p=document.getElementById('prompt').value.trim();
+if(!k){r.textContent='请先填写 API Key';r.className='error';return}
+r.textContent='发送中…';r.className='';
+try{
+var resp=await fetch(e,{method:'POST',headers:{'Authorization':'Bearer '+k,'Content-Type':'application/json'},body:JSON.stringify({model:e.includes('deepseek')?'deepseek-chat':e.includes('moonshot')?'moonshot-v1-8k':e.includes('openai')?'gpt-3.5-turbo':'doubao-lite-32k',messages:[{role:'user',content:p}],max_tokens:1000})});
+var d=await resp.json();
+if(resp.ok){r.textContent='✅ 成功！\n\n'+JSON.stringify(d,null,2);r.className='success'}
+else{r.textContent='❌ API 返回错误 ('+resp.status+')\n\n'+JSON.stringify(d,null,2);r.className='error'}
+}catch(ex){r.textContent='❌ 请求失败：\n\n'+ex.message;r.className='error';if(ex.message.includes('CORS')||ex.message.includes('Failed to fetch')||ex.message.includes('NetworkError'))r.textContent+='\n\n>>> 这表示需要 CF Worker 中转（浏览器 CORS 限制）'}
+}
+</script>
+<p class="note" style="margin-top:24px">如果结果提示 CORS 错误，说明需要部署一个 CF Worker 做中转。</p>
+</body>
+</html>
