@@ -10,58 +10,80 @@
 <link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/ayu-dark.min.css" rel="stylesheet">
 <style>
-:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}
-*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}
-.container{max-width:800px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2)}h1{font-size:28px;font-weight:700;margin-bottom:8px}h2{font-size:20px;font-weight:600;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}h3{font-size:16px;font-weight:600;color:var(--accent);margin:28px 0 10px}p{margin-bottom:16px}.subtitle{font-size:14px;color:var(--text3);margin-bottom:32px}.back-link{font-size:13px;color:var(--text3);display:inline-block;margin-bottom:20px}.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}
-code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}
-.playground{border:1px solid var(--code-border);margin:24px 0;background:var(--card);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-radius:8px}.playground-header{display:flex;align-items:center;padding:0 16px;height:38px;background:#2a2a3a;border-bottom:1px solid var(--code-border);font-size:12px;color:#9a8d82}.playground-header-dots{display:flex;gap:6px;margin-right:16px}.playground-header-dots span{width:10px;height:10px;border-radius:50%}.playground-header span.title{font-weight:600;flex:1}.playground-run{background:var(--accent);color:#fff;border:none;padding:4px 14px;font-size:11px;cursor:pointer;font-weight:600;border-radius:4px}.playground-body{display:flex}.playground-code{width:55%;border-right:1px solid var(--code-border)}.playground-code textarea{width:100%;min-height:220px;border:none;padding:16px;font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--code-bg);color:var(--code-text);resize:vertical;outline:none}.playground-code .CodeMirror{height:220px;font-family:var(--mono);font-size:13px}.playground-code .CodeMirror-gutters{background:#16161e;border-right:1px solid #2a2a3a}.playground-preview{width:45%;min-height:220px;background:#fff}.playground-preview iframe{width:100%;height:100%;border:none;min-height:220px}
-.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}
-.nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:24px 0}
-.nav-card{background:var(--card);border:1px solid var(--border);padding:18px;transition:all .2s;display:block;text-decoration:none}
-.nav-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(139,94,60,0.1)}
-.nav-card h3{font-size:14px;color:var(--text);margin-bottom:4px;font-weight:600}
-.nav-card p{font-size:12px;color:var(--text2);margin:0}
-@media(max-width:768px){.playground-body{flex-direction:column}.playground-code,.playground-preview{width:100%}.playground-code{border-right:none;border-bottom:1px solid var(--code-border)}}
-</style>
-</head>
-<body>
-<div class="container">
+:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}.container{max-width:800px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2)}h1{font-size:28px;font-weight:700;margin-bottom:8px}h2{font-size:20px;font-weight:600;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}h3{font-size:16px;font-weight:600;color:var(--accent);margin:28px 0 10px}p{margin-bottom:16px}.subtitle{font-size:14px;color:var(--text3);margin-bottom:32px}.back-link{font-size:13px;color:var(--text3);display:inline-block;margin-bottom:20px}.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}.playground{border:1px solid var(--code-border);margin:24px 0;background:var(--card);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-radius:8px}.playground-header{display:flex;align-items:center;padding:0 16px;height:38px;background:#2a2a3a;border-bottom:1px solid var(--code-border);font-size:12px;color:#9a8d82}.playground-header-dots{display:flex;gap:6px;margin-right:16px}.playground-header-dots span{width:10px;height:10px;border-radius:50%}.playground-header span.title{font-weight:600;flex:1}.playground-run{background:var(--accent);color:#fff;border:none;padding:4px 14px;font-size:11px;cursor:pointer;font-weight:600;border-radius:4px}.playground-body{display:flex}.playground-code{width:55%;border-right:1px solid var(--code-border)}.playground-code textarea{width:100%;min-height:220px;border:none;padding:16px;font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--code-bg);color:var(--code-text);resize:vertical;outline:none}.playground-code .CodeMirror{height:220px;font-family:var(--mono);font-size:13px}.playground-code .CodeMirror-gutters{background:#16161e;border-right:1px solid #2a2a3a}.playground-preview{width:45%;min-height:220px;background:#fff}.playground-preview iframe{width:100%;height:100%;border:none;min-height:220px}.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}@media(max-width:768px){.playground-body{flex-direction:column}.playground-code,.playground-preview{width:100%}.playground-code{border-right:none;border-bottom:1px solid var(--code-border)}}
+</style></head><body><div class="container">
 <a class="back-link" href="index.html">← 返回目录</a>
 <h1>CSS · 视觉样式</h1>
-<p class="subtitle">颜色、字体、间距、布局——让裸奔的HTML变好看</p>
-
-<div class="nav-grid" style="margin:24px 0 48px">
-  <a class="nav-card" href="css-1.html">
-    <h3>① 颜色和字体</h3>
-    <p>color · background · font-size</p>
-  </a>
-  <a class="nav-card" href="css-2.html">
-    <h3>② 盒模型</h3>
-    <p>padding · border · margin · 圆角</p>
-  </a>
-  <a class="nav-card" href="css-3.html">
-    <h3>③ 做一张角色卡片</h3>
-    <p>综合练习：拼出一个OC卡片</p>
-  </a>
+<p class="subtitle">颜色、字体、间距、布局——让裸奔的HTML变好看。三步上手。</p>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:32px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 1 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">颜色和字体</h2></div>
+<p>CSS 的格式永远是 <code>属性: 值;</code>。把下面代码里的颜色和字号改一改，看变化：</p>
+<div class="playground" id="pg-1"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">style.css</span><button class="playground-run" onclick="runPlayground('pg-1')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-1-code">&lt;style&gt;
+  h1 {
+    color: #8b5e3c;
+    font-size: 24px;
+  }
+  p {
+    color: #6b5e54;
+    font-size: 14px;
+  }
+&lt;/style&gt;
+&lt;h1&gt;灯儿&lt;/h1&gt;
+&lt;p&gt;STEM 首席研究员&lt;/p&gt;</textarea></div><div class="playground-preview"><iframe id="pg-1-frame"></iframe></div></div></div>
+<div class="note"><code>color</code> = 文字颜色&nbsp;&nbsp;<code>background</code> = 背景色&nbsp;&nbsp;<code>font-size</code> = 字号<br>颜色可用英文名（<code>red</code>）或十六进制（<code>#8b5e3c</code>）。<br><strong>💡 试试看：</strong>把 <code>color</code> 改成 <code>#c0392b</code> 看看效果。</div>
+<h3>🔍 发生了什么</h3>
+<p><code>&lt;style&gt;</code> 标签里写的就是 CSS。改一处，全页面生效——比在每个 HTML 标签上写 <code>style="..."</code> 方便多了。</p>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:40px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 2 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">盒模型</h2></div>
+<p>每个 HTML 元素都是一个<strong>盒子</strong>。从内到外：内容 → padding → border → margin：</p>
+<div style="background:var(--accent-bg);border:1px solid var(--border);padding:16px;margin:16px 0;font-family:var(--mono);font-size:11px;color:var(--text2);line-height:1.8;white-space:pre">┌────────── margin ──────────┐
+│ ┌──────── border ────────┐ │
+│ │ ┌───── padding ─────┐ │ │
+│ │ │    你的内容在这     │ │ │
+│ │ └────────────────────┘ │ │
+│ └─────────────────────────┘ │
+└──────────────────────────────┘</div>
+<p>改右侧数字，看蓝色盒子的变化：</p>
+<div class="playground" id="pg-2"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">盒子实验</span><button class="playground-run" onclick="runPlayground('pg-2')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-2-code">&lt;style&gt;
+  .box { background: #e8f0fe; color: #1a3a5c;
+    padding: 20px; border: 2px solid #4a90d9;
+    margin: 30px; border-radius: 8px; font-size: 14px; }
+&lt;/style&gt;
+&lt;div class="box"&gt;我是盒子里的内容。&lt;/div&gt;
+&lt;div class="box"&gt;第二个盒子，一样有 margin。&lt;/div&gt;</textarea></div><div class="playground-preview"><iframe id="pg-2-frame"></iframe></div></div></div>
+<div class="note"><code>padding</code> = 内边距&nbsp;&nbsp;<code>border</code> = 边框&nbsp;&nbsp;<code>margin</code> = 外边距&nbsp;&nbsp;<code>border-radius</code> = 圆角<br><strong>💡 试试看：</strong>把 <code>border-radius</code> 改成 <code>50%</code>——盒子会变成椭圆！</div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:40px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 3 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">做一张角色卡片</h2></div>
+<p>把学到的颜色、盒模型、字体拼在一起：</p>
+<div class="playground" id="pg-3"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">角色卡片</span><button class="playground-run" onclick="runPlayground('pg-3')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-3-code">&lt;style&gt;
+  .card { background: #fff; border: 1px solid #ddd5cb;
+    padding: 24px; max-width: 300px; text-align: center; }
+  .card .avatar { width: 80px; height: 80px;
+    background: #8b5e3c; border-radius: 50%;
+    margin: 0 auto 16px; font-size: 40px; line-height: 80px; }
+  .card h2 { color: #2c2420; font-size: 18px; margin-bottom: 4px; }
+  .card .role { color: #8b5e3c; font-size: 13px; font-weight: 600;
+    margin-bottom: 12px; letter-spacing: 1px; }
+  .card .info { color: #6b5e54; font-size: 13px; margin: 4px 0; }
+  .card .tag { display: inline-block; border: 1px solid #8b5e3c;
+    color: #8b5e3c; padding: 2px 10px; font-size: 11px; margin: 12px 4px 0; }
+&lt;/style&gt;
+&lt;div class="card"&gt;
+  &lt;div class="avatar"&gt;🧪&lt;/div&gt;
+  &lt;h2&gt;灯儿&lt;/h2&gt;
+  &lt;p class="role"&gt;STEM 首席研究员&lt;/p&gt;
+  &lt;p class="info"&gt;📍 Tower A · 八楼&lt;/p&gt;
+  &lt;span class="tag"&gt;S级权限&lt;/span&gt;
+  &lt;span class="tag"&gt;碎片科学&lt;/span&gt;
+&lt;/div&gt;</textarea></div><div class="playground-preview"><iframe id="pg-3-frame"></iframe></div></div></div>
+<div class="note"><code>border-radius: 50%</code> → 圆形&nbsp;&nbsp;<code>text-align: center</code> → 居中<br><strong>💡 试试看：</strong>换成你的OC名字和信息！</div>
+<h2 style="margin-top:40px">🎯 你学会了</h2>
+<p>✅ color 和 font-size 控制文字 ✅ padding/border/margin 控制间距 ✅ border-radius 做圆角 ✅ .class 选择器 ✅ 拼出完整角色卡片</p>
+<p style="color:var(--text2)">先把手卡用起来，剩下边用边查。</p>
+<div class="nav-row"><a href="html.html">← HTML · 骨架</a><a href="js.html">JavaScript · 行为 →</a></div>
 </div>
-
-<p style="color:var(--text3);margin-top:60px;text-align:center">🚧 更多 CSS 技巧（布局、动画等）后续更新。</p>
-
-<div class="nav-row">
-  <a href="html.html">← HTML · 骨架</a>
-  <a href="js.html">JavaScript · 行为 →</a>
-</div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/xml/xml.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/css/css.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/javascript/javascript.min.js"></script>
-<script>
-var editors={};
-function initPG(id){var ta=document.getElementById(id+'-code');if(!ta)return;var cm=CodeMirror.fromTextArea(ta,{mode:'htmlmixed',theme:'ayu-dark',lineNumbers:true,lineWrapping:true,tabSize:2,viewportMargin:Infinity});cm.setSize('100%',220);editors[id]=cm;runPlayground(id);}
-function runPlayground(id){var cm=editors[id];var code=cm?cm.getValue():document.getElementById(id+'-code').value;var f=document.getElementById(id+'-frame');var p=f.parentNode;var n=document.createElement('iframe');n.id=id+'-frame';n.style.cssText='width:100%;border:none;min-height:220px';p.replaceChild(n,f);var d=n.contentDocument||n.contentWindow.document;d.open();d.write(code);d.close();}
-</script>
+<script>var editors={};function initPG(id){var ta=document.getElementById(id+'-code');if(!ta)return;var cm=CodeMirror.fromTextArea(ta,{mode:'htmlmixed',theme:'ayu-dark',lineNumbers:true,lineWrapping:true,tabSize:2,viewportMargin:Infinity});cm.setSize('100%',220);editors[id]=cm;runPlayground(id);}function runPlayground(id){var cm=editors[id];var code=cm?cm.getValue():document.getElementById(id+'-code').value;var f=document.getElementById(id+'-frame');var p=f.parentNode;var n=document.createElement('iframe');n.id=id+'-frame';n.style.cssText='width:100%;border:none;min-height:220px';p.replaceChild(n,f);var d=n.contentDocument||n.contentWindow.document;d.open();d.write(code);d.close();}window.addEventListener('load',function(){initPG('pg-1');initPG('pg-2');initPG('pg-3');});</script>
 </body>
 </html>
