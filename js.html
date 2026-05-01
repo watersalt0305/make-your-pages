@@ -9,59 +9,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/theme/ayu-dark.min.css" rel="stylesheet">
-<style>
-:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}
-*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}
-.container{max-width:800px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2)}h1{font-size:28px;font-weight:700;margin-bottom:8px}h2{font-size:20px;font-weight:600;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}h3{font-size:16px;font-weight:600;color:var(--accent);margin:28px 0 10px}p{margin-bottom:16px}.subtitle{font-size:14px;color:var(--text3);margin-bottom:32px}.back-link{font-size:13px;color:var(--text3);display:inline-block;margin-bottom:20px}.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}
-code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}
-.playground{border:1px solid var(--code-border);margin:24px 0;background:var(--card);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-radius:8px}.playground-header{display:flex;align-items:center;padding:0 16px;height:38px;background:#2a2a3a;border-bottom:1px solid var(--code-border);font-size:12px;color:#9a8d82}.playground-header-dots{display:flex;gap:6px;margin-right:16px}.playground-header-dots span{width:10px;height:10px;border-radius:50%}.playground-header span.title{font-weight:600;flex:1}.playground-run{background:var(--accent);color:#fff;border:none;padding:4px 14px;font-size:11px;cursor:pointer;font-weight:600;border-radius:4px}.playground-body{display:flex}.playground-code{width:55%;border-right:1px solid var(--code-border)}.playground-code textarea{width:100%;min-height:220px;border:none;padding:16px;font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--code-bg);color:var(--code-text);resize:vertical;outline:none}.playground-code .CodeMirror{height:220px;font-family:var(--mono);font-size:13px}.playground-code .CodeMirror-gutters{background:#16161e;border-right:1px solid #2a2a3a}.playground-preview{width:45%;min-height:220px;background:#fff}.playground-preview iframe{width:100%;height:100%;border:none;min-height:220px}
-.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}
-.nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:24px 0}
-.nav-card{background:var(--card);border:1px solid var(--border);padding:18px;transition:all .2s;display:block;text-decoration:none}
-.nav-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(139,94,60,0.1)}
-.nav-card h3{font-size:14px;color:var(--text);margin-bottom:4px;font-weight:600}
-.nav-card p{font-size:12px;color:var(--text2);margin:0}
-@media(max-width:768px){.playground-body{flex-direction:column}.playground-code,.playground-preview{width:100%}.playground-code{border-right:none;border-bottom:1px solid var(--code-border)}}
-</style>
-</head>
-<body>
-<div class="container">
+<style>:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--code-border:#45475a;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}.container{max-width:800px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2)}h1{font-size:28px;font-weight:700;margin-bottom:8px}h2{font-size:20px;font-weight:600;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}h3{font-size:16px;font-weight:600;color:var(--accent);margin:28px 0 10px}p{margin-bottom:16px}.subtitle{font-size:14px;color:var(--text3);margin-bottom:32px}.back-link{font-size:13px;color:var(--text3);display:inline-block;margin-bottom:20px}.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}.playground{border:1px solid var(--code-border);margin:24px 0;background:var(--card);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border-radius:8px}.playground-header{display:flex;align-items:center;padding:0 16px;height:38px;background:#2a2a3a;border-bottom:1px solid var(--code-border);font-size:12px;color:#9a8d82}.playground-header-dots{display:flex;gap:6px;margin-right:16px}.playground-header-dots span{width:10px;height:10px;border-radius:50%}.playground-header span.title{font-weight:600;flex:1}.playground-run{background:var(--accent);color:#fff;border:none;padding:4px 14px;font-size:11px;cursor:pointer;font-weight:600;border-radius:4px}.playground-body{display:flex}.playground-code{width:55%;border-right:1px solid var(--code-border)}.playground-code textarea{width:100%;min-height:220px;border:none;padding:16px;font-family:var(--mono);font-size:13px;line-height:1.6;background:var(--code-bg);color:var(--code-text);resize:vertical;outline:none}.playground-code .CodeMirror{height:220px;font-family:var(--mono);font-size:13px}.playground-code .CodeMirror-gutters{background:#16161e;border-right:1px solid #2a2a3a}.playground-preview{width:45%;min-height:220px;background:#fff}.playground-preview iframe{width:100%;height:100%;border:none;min-height:220px}.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}@media(max-width:768px){.playground-body{flex-direction:column}.playground-code,.playground-preview{width:100%}.playground-code{border-right:none;border-bottom:1px solid var(--code-border)}}
+</style></head><body><div class="container">
 <a class="back-link" href="index.html">← 返回目录</a>
 <h1>JavaScript · 交互行为</h1>
-<p class="subtitle">点击、切换、弹窗——让静态页面动起来</p>
-
-<div class="nav-grid" style="margin:24px 0 48px">
-  <a class="nav-card" href="js-1.html">
-    <h3>① 按钮点击</h3>
-    <p>onclick · alert · 函数</p>
-  </a>
-  <a class="nav-card" href="js-2.html">
-    <h3>② 修改文字</h3>
-    <p>getElementById · textContent · style</p>
-  </a>
-  <a class="nav-card" href="js-3.html">
-    <h3>③ 切换显示/隐藏</h3>
-    <p>display · if/else · 开关逻辑</p>
-  </a>
+<p class="subtitle">点击、切换、弹窗——让静态页面动起来。三步上手。</p>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:32px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 1 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">按钮点击</h2></div>
+<p>最基础的就是：<strong>点按钮，发生点什么。</strong></p>
+<div class="playground" id="pg-1"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">按钮实验</span><button class="playground-run" onclick="runPlayground('pg-1')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-1-code">&lt;style&gt;button{background:#8b5e3c;color:white;border:none;padding:10px 20px;cursor:pointer;margin:4px}button:hover{background:#b07a50}&lt;/style&gt;
+&lt;h3&gt;点击按钮试试&lt;/h3&gt;
+&lt;button onclick="alert('你好！')"&gt;打招呼&lt;/button&gt;
+&lt;button onclick="alert('S级权限确认')"&gt;查看权限&lt;/button&gt;
+&lt;script&gt;function sayHi(){alert('灯儿：实验室温度 19.7°C')}&lt;/script&gt;
+&lt;button onclick="sayHi()"&gt;呼叫灯儿&lt;/button&gt;</textarea></div><div class="playground-preview"><iframe id="pg-1-frame"></iframe></div></div></div>
+<div class="note"><code>onclick="..."</code> = 点击时执行 JS&nbsp;&nbsp;<code>alert('...')</code> = 弹出提示框<br><strong>💡 试试看：</strong>改 <code>alert</code> 里的文字。</div>
+<h3>🔍 发生了什么</h3>
+<p><code>&lt;script&gt;</code> 里的内容会被浏览器「记住」，点了按钮才执行。这叫<strong>事件驱动</strong>。</p>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:40px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 2 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">修改页面上的文字</h2></div>
+<p>JS 的核心公式：<b>找到元素 → 对它做点什么</b>。</p>
+<div class="playground" id="pg-2"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">文字修改实验</span><button class="playground-run" onclick="runPlayground('pg-2')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-2-code">&lt;style&gt;button{background:#8b5e3c;color:white;border:none;padding:8px 16px;cursor:pointer;margin:4px;font-size:13px}&lt;/style&gt;
+&lt;p&gt;状态：&lt;span id="status"&gt;正常&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;权限：&lt;span id="level"&gt;B级&lt;/span&gt;&lt;/p&gt;
+&lt;button onclick="upgrade()"&gt;升级权限&lt;/button&gt;
+&lt;button onclick="resetStatus()"&gt;重置&lt;/button&gt;
+&lt;script&gt;
+function upgrade(){
+document.getElementById('status').textContent='运行中';
+document.getElementById('level').textContent='S级';
+document.getElementById('level').style.color='#8b5e3c';
+}
+function resetStatus(){
+document.getElementById('status').textContent='正常';
+document.getElementById('level').textContent='B级';
+document.getElementById('level').style.color='#2c2420';
+}
+&lt;/script&gt;</textarea></div><div class="playground-preview"><iframe id="pg-2-frame"></iframe></div></div></div>
+<div class="note"><code>document.getElementById('xxx')</code> = 找到 id 为 xxx 的元素<br><code>.textContent = '...'</code> = 改文字&nbsp;&nbsp;<code>.style.color = '...'</code> = 改颜色<br><strong>💡 试试看：</strong>把 'S级' 改成你OC世界的权限名。</div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:40px"><span style="font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--accent);padding:2px 8px;border-radius:3px;font-weight:600">第 3 步</span><h2 style="border:none;margin:0;padding:0;font-size:18px">切换显示/隐藏</h2></div>
+<p>OC 站最常见的交互：<strong>点一下展开详情，再点一下收起。</strong></p>
+<div class="playground" id="pg-3"><div class="playground-header"><div class="playground-header-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><span class="title">档案面板</span><button class="playground-run" onclick="runPlayground('pg-3')">▶ 运行</button></div><div class="playground-body"><div class="playground-code"><textarea id="pg-3-code">&lt;style&gt;.panel{border:1px solid #ddd;padding:16px;max-width:320px}.panel h3{color:#8b5e3c;margin-bottom:8px}button{background:#8b5e3c;color:white;border:none;padding:6px 16px;cursor:pointer}#detail{display:none;margin-top:12px;color:#6b5e54;font-size:13px;border-top:1px solid #eee;padding-top:12px}&lt;/style&gt;
+&lt;div class="panel"&gt;
+&lt;h3&gt;灯儿 · 研究员档案&lt;/h3&gt;
+&lt;p&gt;STEM 首席&lt;/p&gt;
+&lt;button onclick="toggleDetail()"&gt;展开详情&lt;/button&gt;
+&lt;div id="detail"&gt;
+&lt;p&gt;编号：R-0042&lt;/p&gt;
+&lt;p&gt;部门：碎片科学研究所&lt;/p&gt;
+&lt;p&gt;权限等级：S&lt;/p&gt;
+&lt;p&gt;备注：不要碰她的咖啡。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+function toggleDetail(){
+var d=document.getElementById('detail');
+if(d.style.display==='block'){d.style.display='none'}
+else{d.style.display='block'}
+}
+&lt;/script&gt;</textarea></div><div class="playground-preview"><iframe id="pg-3-frame"></iframe></div></div></div>
+<div class="note"><code>display: none</code> = 隐藏&nbsp;&nbsp;<code>display: block</code> = 显示<br><code>if (条件) { } else { }</code> = 如果...就...否则...<br><strong>💡 试试看：</strong>把档案内容换成你OC的设定。</div>
+<h2 style="margin-top:40px">🎯 你学会了</h2>
+<p>✅ onclick 响应点击 ✅ getElementById 找到元素 ✅ textContent 改文字 ✅ display 切换显隐 ✅ if/else 做开关</p>
+<p style="color:var(--text2)">有了这三样——<b>点击响应 + 内容修改 + 显示切换</b>——你就可以做一个有交互的 OC 页面了。</p>
+<div class="nav-row"><a href="css.html">← CSS · 样式</a><a href="basics.html">概念扫盲 →</a></div>
 </div>
-
-<p style="color:var(--text3);margin-top:60px;text-align:center">🚧 更多 JS 技巧（循环、数组、fetch 等）后续更新。</p>
-
-<div class="nav-row">
-  <a href="css.html">← CSS · 样式</a>
-  <a href="basics.html">概念扫盲 →</a>
-</div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/xml/xml.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/css/css.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/javascript/javascript.min.js"></script>
-<script>
-var editors={};
-function initPG(id){var ta=document.getElementById(id+'-code');if(!ta)return;var cm=CodeMirror.fromTextArea(ta,{mode:'htmlmixed',theme:'ayu-dark',lineNumbers:true,lineWrapping:true,tabSize:2,viewportMargin:Infinity});cm.setSize('100%',220);editors[id]=cm;runPlayground(id);}
-function runPlayground(id){var cm=editors[id];var code=cm?cm.getValue():document.getElementById(id+'-code').value;var f=document.getElementById(id+'-frame');var p=f.parentNode;var n=document.createElement('iframe');n.id=id+'-frame';n.style.cssText='width:100%;border:none;min-height:220px';p.replaceChild(n,f);var d=n.contentDocument||n.contentWindow.document;d.open();d.write(code);d.close();}
-</script>
+<script>var editors={};function initPG(id){var ta=document.getElementById(id+'-code');if(!ta)return;var cm=CodeMirror.fromTextArea(ta,{mode:'htmlmixed',theme:'ayu-dark',lineNumbers:true,lineWrapping:true,tabSize:2,viewportMargin:Infinity});cm.setSize('100%',220);editors[id]=cm;runPlayground(id);}function runPlayground(id){var cm=editors[id];var code=cm?cm.getValue():document.getElementById(id+'-code').value;var f=document.getElementById(id+'-frame');var p=f.parentNode;var n=document.createElement('iframe');n.id=id+'-frame';n.style.cssText='width:100%;border:none;min-height:220px';p.replaceChild(n,f);var d=n.contentDocument||n.contentWindow.document;d.open();d.write(code);d.close();}window.addEventListener('load',function(){initPG('pg-1');initPG('pg-2');initPG('pg-3');});</script>
 </body>
 </html>
