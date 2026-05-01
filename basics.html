@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>概念扫盲 — Make Your Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f8f6f3;--card:#fffefa;--border:#ddd5cb;--text:#2c2420;--text2:#6b5e54;--text3:#9a8d82;--accent:#8b5e3c;--accent2:#b07a50;--accent-bg:#f5efe8;--code-bg:#1e1e2e;--code-text:#cdd6f4;--font:'Inter','Noto Sans SC',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','Fira Code','Consolas',monospace}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.75;background-image:radial-gradient(circle,rgba(180,165,145,0.25) 1px,transparent 1px);background-size:24px 24px}
+.container{max-width:800px;margin:0 auto;padding:40px 24px}a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent2)}h1{font-size:28px;font-weight:700;margin-bottom:8px}h2{font-size:20px;font-weight:600;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}p{margin-bottom:16px}.subtitle{font-size:14px;color:var(--text3);margin-bottom:32px}.back-link{font-size:13px;color:var(--text3);display:inline-block;margin-bottom:20px}
+.note{background:var(--accent-bg);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14px;color:var(--text2)}
+code{font-family:var(--mono);font-size:13px;background:rgba(139,94,60,0.1);color:var(--accent);padding:2px 6px;border-radius:3px}
+pre{background:var(--code-bg);padding:16px;margin:16px 0;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--code-text);border-radius:6px}
+.compare-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}.compare-table th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--accent);color:var(--accent);font-weight:600;font-size:11px;letter-spacing:0.5px;text-transform:uppercase}.compare-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}.compare-table tr:nth-child(even){background:rgba(245,239,232,0.5)}
+.nav-row{display:flex;justify-content:space-between;margin-top:40px;padding-top:16px;border-top:1px solid var(--border);font-size:14px}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back-link" href="index.html">← 返回目录</a>
+<h1>概念扫盲</h1>
+<p class="subtitle">那些听起来很吓人但其实很简单的东西</p>
+
+<h2 id="java-vs-js">Java ≠ JavaScript</h2>
+<table class="compare-table">
+<tr><th></th><th>Java</th><th>JavaScript</th></tr>
+<tr><td>诞生</td><td>1995，Sun Microsystems</td><td>1995，Netscape 浏览器</td></tr>
+<tr><td>关系</td><td colspan="2" style="text-align:center;color:var(--accent);font-weight:600">完全无关。名字像是因为蹭热度。</td></tr>
+<tr><td>用在哪</td><td>安卓App、银行后端</td><td>网页交互、网页一切</td></tr>
+<tr><td>类比</td><td>雷锋</td><td>雷峰塔</td></tr>
+<tr><td>做OC网站</td><td>❌ 不需要</td><td>✅ 就是它</td></tr>
+</table>
+<div class="note">JavaScript 原名叫 Mocha，后来改叫 LiveScript，最后因为 Java 当年很火，Netscape 为了蹭热度硬改成了 JavaScript。这个营销决策祸害了整个行业三十年。</div>
+
+<h2 id="json">JSON 是什么</h2>
+<p>JSON = <b>J</b>ava<b>S</b>cript <b>O</b>bject <b>N</b>otation。一种数据格式，长得像 JS 但<b>不是代码</b>：</p>
+<table class="compare-table">
+<tr><th>JavaScript 对象</th><th>JSON</th></tr>
+<tr>
+<td><pre style="margin:0;background:transparent;padding:8px">var oc = {
+  name: "灯儿",
+  age: 27
+};</pre></td>
+<td><pre style="margin:0;background:transparent;padding:8px">{
+  "name": "灯儿",
+  "age": 27
+}</pre></td>
+</tr>
+</table>
+<p>区别：JSON 的键名<b>必须双引号</b>，不能有注释，不能执行。它只是一张纸条。</p>
+
+<h2 id="backend">需要后端吗</h2>
+<table class="compare-table">
+<tr><th></th><th>前端</th><th>后端</th></tr>
+<tr><td>跑在哪</td><td>用户的浏览器里</td><td>服务器上</td></tr>
+<tr><td>语言</td><td>HTML / CSS / JS</td><td>Python / Node / Java…</td></tr>
+<tr><td>干什么</td><td>展示页面、交互</td><td>存数据、处理请求、登录验证</td></tr>
+<tr><td>OC网站需要吗</td><td>✅ 永远需要</td><td>❌ 大概率不需要</td></tr>
+</table>
+<div class="note">你的OC展示站几乎肯定是<b>纯前端</b>——所有内容写在文件里，不需要服务器。这就是为什么能免费部署。</div>
+
+<h2 id="api">API 是什么</h2>
+<p>API = 两个程序之间说话的方式。</p>
+<p>类比：去餐厅吃饭——你对服务员说"要意面"（请求），服务员传给厨房（API），厨房做好端给你（响应）。</p>
+<p><b>API Key</b> = 你的会员卡。证明"这个请求是我的，我付过钱了"。</p>
+<div class="note">详细的 API 获取与使用会在「Vibe Coding」章节中讲解。</div>
+
+<div class="nav-row">
+  <a href="js.html">← JavaScript</a>
+  <a href="index.html">回到目录 →</a>
+</div>
+</div>
+</body>
+</html>
